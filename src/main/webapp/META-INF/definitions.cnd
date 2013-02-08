@@ -1,0 +1,14 @@
+<jnt = 'http://www.jahia.org/jahia/nt/1.0'>
+<jmix = 'http://www.jahia.org/jahia/mix/1.0'>
+
+[jnt:fileViewer] > jmix:siteComponent, jnt:content, mix:title
+ - folder (weakreference, picker[type='folder']) indexed=no
+ - view (string, choicelist[resourceBundle]) = 'hidden.dirDropdown' indexed=no < 'hidden.dirDropdown','hidden.dirIcons','hidden.fileList'
+ - level (long) = 0 indexed=no
+ - paramName (string) = 'folder' indexed=no
+ - selectLabel (string) = 'Select' indexed=no i18n
+
+[jmix:folderIcon] mixin
+ itemtype=content
+ extends=jnt:folder
+ - folderIcon (weakreference, picker[type='image'])
