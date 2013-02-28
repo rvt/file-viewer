@@ -17,7 +17,7 @@
                 <li>
                     <a href="${moduleMap.thisUrl}?${moduleMap.params}&${moduleMap.folder}=${subchild.name}">
                         <c:if test="${not empty subchild.properties.folderIcon}">
-                            <img src="${page.properties.folderIcon.node.url}"/>
+                            <img src="<c:url value="${subchild.properties.folderIcon.node.url}"/>"/>
                         </c:if>
                         <c:if test="${empty subchild.properties.folderIcon}">
                             <c:set var="selected" value=""/>
