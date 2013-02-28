@@ -14,17 +14,21 @@
     <c:if test="${moduleMap.renderPath eq true}">
         <c:forEach items="${moduleMap.targetNode.nodes}" var="subchild">
             <c:if test="${jcr:isNodeType(subchild, 'jnt:folder')}">
-                <li>
+                <c:if test="${subchild.name ne moduleMap.selectedValue}">
+                     <c:set var="selected" value="_closed"/>
+                     <c:set var="select_classname" value=""/>
+                </c:if>
+                <c:if test="${subchild.name eq moduleMap.selectedValue}"> 
+                    <c:set var="select_classname" value="selected"/>  
+		</c:if>
+                <li class="${select_classname}">
                     <a href="${moduleMap.thisUrl}?${moduleMap.params}&${moduleMap.folder}=${subchild.name}">
                         <c:if test="${not empty subchild.properties.folderIcon}">
                             <img src="<c:url value="${subchild.properties.folderIcon.node.url}"/>"/>
                         </c:if>
                         <c:if test="${empty subchild.properties.folderIcon}">
                             <c:set var="selected" value=""/>
-                            <c:if test="${subchild.name ne moduleMap.selectedValue}">
-                                <c:set var="selected" value="_closed"/>
-                            </c:if>
-                            <img src="<c:url value='${url.currentModule}/img/folder${selected}.png'/>"/>
+                            <img src="${url.currentModule}/img/folder${selected}.png"/>
                         </c:if>
                         <br/>
                         <span>${subchild.name}</span>
