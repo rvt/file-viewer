@@ -24,7 +24,7 @@
                             <c:if test="${subchild.name ne moduleMap.selectedValue}">
                                 <c:set var="selected" value="_closed"/>
                             </c:if>
-                            <img src="${url.currentModule}/img/folder${selected}.png"/>
+                            <img src="<c:url value='${url.currentModule}/img/folder${selected}.png'/>"/>
                         </c:if>
                         <br/>
                         <span>${subchild.name}</span>
